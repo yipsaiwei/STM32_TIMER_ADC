@@ -1,0 +1,10 @@
+Usart.c:11:7:usartSetBaudRate	64	static
+Usart.c:40:7:usartConfigure	24	static
+Usart.c:51:7:writeToDataRegister	16	static
+Usart.c:56:5:isTransmissionComplete	16	static
+Usart.c:60:5:isTDREmpty	16	static
+Usart.c:64:5:isRDRAvailableForRead	16	static
+Usart.c:68:5:returnRDRValue	16	static
+Usart.c:72:10:returnUsartFrequency	16	static
+Usart.c:79:9:usartTransmit	24	static
+Usart.c:88:8:readFromUsart	24	static
