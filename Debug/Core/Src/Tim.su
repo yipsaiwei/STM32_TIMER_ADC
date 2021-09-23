@@ -1,6 +1,6 @@
 Tim.c:10:7:timerBasicConfig	24	static
 Tim.c:24:7:timerEventGenerationConfig	16	static
 Tim.c:29:7:timerCaptureCompareConfig	24	static
-Tim.c:58:7:timSetPrescalerReg	16	static
-Tim.c:62:7:timSetARRReg	16	static
-Tim.c:66:7:setFrequency	40	static
+Tim.c:51:7:timSetPrescalerReg	16	static
+Tim.c:55:7:timSetARRReg	16	static
+Tim.c:59:7:setFrequency	40	static

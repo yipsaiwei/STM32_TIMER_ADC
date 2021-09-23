@@ -94,3 +94,8 @@ Status readFromUsart(UsartReg  *usart, char  *msg){
   }while(*msg != '\0');
   return  OK;
 }
+
+void  usartConfiguration(UsartReg *usart, UsartConfig config, int baudrate){
+  usartSetBaudRate(usart, baudrate);
+  usartConfigure(usart,config);
+}

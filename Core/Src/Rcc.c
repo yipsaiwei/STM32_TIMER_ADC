@@ -16,11 +16,6 @@ void	rccResetUnresetDevice(_IO_ uint32_t *io, int bitNum){
 void	rccUnresetAndEnableGpio(RccGpio	rccGpio){
   rccResetUnresetDevice(ahb1ResetReg, rccGpio);
   rcc->AHB1ENR |= (1 << rccGpio);
-  /*
-	rcc->AHB1RSTR = RCC_RESET_DEVICE(rccGpio);		//Reset
-	rcc->AHB1RSTR = RCC_SET_DEVICE(rcc);		//Unreset
-	rcc->AHB1ENR = ;		//Enable clock gating
-   */
 }
 
 void	rccUnresetAndEnableUsart(RccUsart	rccUsart){
@@ -35,15 +30,7 @@ void	rccUnresetAndEnableUsart(RccUsart	rccUsart){
 }
 
 void  rccUnresetAndEnableTimer(RccTimer rccTimer){
-  /*
-  if(rccTimer == RCC_TIM1 || rccTimer == RCC_TIM9 || rccTimer == RCC_TIM10 || rccTimer == RCC_TIM11){
-    rccResetUnresetDevice(apb2ResetReg, rccTimer);
-    rcc->APB2ENR |= (1 << rccTimer);
-  }else{
-    rccResetUnresetDevice(apb1ResetReg, (rccTimer >> 16));
-    rcc->APB1ENR |= (1 << (rccTimer >> 16));
-  }
-  */
+
   rccResetUnresetDevice((uint32_t *)(RccBaseAddress + (rccTimer >> 16)), (rccTimer & 0xF));
   if((rccTimer >> 16) == RCC_APB1){
     rcc->APB1ENR |= (1 << (rccTimer & 0xF));

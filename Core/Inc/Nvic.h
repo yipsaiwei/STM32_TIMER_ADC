@@ -30,6 +30,14 @@ struct  NvicReg_t {
   _IO_ uint32_t  STIR;
 };
 
+typedef enum{
+  ADC_IRQ    = 18,
+  TIM4_IRQ   = 30,
+  USART1_IRQ = 37,
+  USART2_IRQ = 38,
+  USART6_IRQ = 71,
+}IrqNum;
+
 #define nvicEnableIrq(n)                        \
     nvic->ISER[n >> 5] = 1 << ((n) & 0x1f)
 

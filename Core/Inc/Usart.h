@@ -139,5 +139,6 @@ int returnRDRValue(UsartReg *usart);
 uint32_t returnUsartFrequency(UsartReg *usart);
 Status  usartTransmit(UsartReg  *usart, char  *msg);
 Status readFromUsart(UsartReg  *usart, char  *msg);
+void  usartConfiguration(UsartReg *usart, UsartConfig config, int baudrate);
 
 #endif /* INC_USART_H_ */

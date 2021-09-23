@@ -61,8 +61,6 @@ void timerConfigureExperiment1PWM(TimReg *timer);
 void timerConfigureExp2ForceInactiveActive(TimReg *timer);
 void  timerConfigurationExp3Toggle(TimReg  *timer);
 void  timerExp4TriggerAdcWithTimer();
-void  usartConfiguration(UsartReg *usart, UsartConfig config, int baudrate);
-void  sendToUsart(UsartReg  *usart, char  *msg);
 void  readAndPrintAdc(void);
 /* USER CODE END PFP */
 
@@ -204,7 +202,7 @@ void  timerConfigurationExp3Toggle(TimReg  *timer){
 
   timerCaptureCompareConfig(timer, 3, CC3_OUT_EN | TOGGLE);
   //timer->CNT = 0;
-  nvicEnableIrq(30);
+  nvicEnableIrq(TIM4_IRQ);
 
   //To achieve 1Hz, toggle rate should be 2Hz (Toggle once every 0.5s)
   setFrequency(timer, 2, 65000);
@@ -268,7 +266,7 @@ void  timerExp4TriggerAdcWithTimer(){
 
   adcSetChannelSequence(adc1, channel, 1);
 
-  nvicEnableIrq(18);
+  nvicEnableIrq(ADC_IRQ);
 
   adcConfiguration(adc1, ADC_CONVERTER_ON | REGULAR_CHN_START_CONVERT
                         | REGULAR_EXT_EVENT_SEL_TIM_4_CC4 | REGULAR_TRIG_DETECTION_RISING_EDGE | EOC_INT_EN | SET_EOC_BIT_AFTER_REGULAR_CONVERSION_ENDED);
@@ -298,20 +296,6 @@ void  readAndPrintAdc(void){
     printf("ADC value : %d, voltage = %f\n\r", adcValue, voltage);
     adcValue = previousValue;
   }
-}
-
-void  sendToUsart(UsartReg  *usart, char  *msg){
-  for(int  i = 0; msg[i] != '\0'; i++){
-    while(!isTDREmpty(usart));
-    writeToDataRegister(usart, msg[i]);
-    while(!isTransmissionComplete(usart));
-    }
-  free(msg);
-}
-
-void  usartConfiguration(UsartReg *usart, UsartConfig config, int baudrate){
-  usartSetBaudRate(usart, baudrate);
-  usartConfigure(usart,config);
 }
 
 

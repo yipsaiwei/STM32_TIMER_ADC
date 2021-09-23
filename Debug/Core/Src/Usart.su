@@ -8,3 +8,4 @@ Usart.c:68:5:returnRDRValue	16	static
 Usart.c:72:10:returnUsartFrequency	16	static
 Usart.c:79:9:usartTransmit	24	static
 Usart.c:88:8:readFromUsart	24	static
+Usart.c:98:7:usartConfiguration	24	static

@@ -27,13 +27,6 @@ void  timerEventGenerationConfig(TimReg *timer, SpecificTimConfig1 config){
 }
 
 void  timerCaptureCompareConfig(TimReg *timer, int  channel, SpecificTim1Config2  config){
-  /*
-  timer->CCMR1 &= TIM_16_BIT_MASK;
-  timer->CCMR1 |= (config & 0xFFFF);
-
-  timer->CCMR2 &= TIM_16_BIT_MASK;
-  timer->CCMR2 |= (config >> 16) & 0xFFFF;
-  */
   if(channel == 1 || channel == 2){
     if(channel == 1){
       timer->CCMR1 &= TIM_CHANNEL_MASK_LOWER_8;
